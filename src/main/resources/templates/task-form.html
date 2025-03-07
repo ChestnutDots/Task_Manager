@@ -12,7 +12,7 @@
   <hr>
   <p class="h4 mb-4">Save Task</p>
 
-  <form action="#" th:action="@{/tasks/save}"
+  <form action="#" th:action="@{/save}"
         th:object="${task}" method="POST">
 
     <!-- A hidden id field to handle updates and delete: -->
@@ -24,12 +24,12 @@
     <input type="text" th:field="*{taskStatus}"
            class="form-control mb-4 w-25" placeholder="Task Status">
 
-    <button type="submit" class="btn btn-info col-2">Save</button>
+    <button type="submit" class="btn btn-success col-2">Save</button>
 
 
   </form>
   <hr>
-  <a th:href="@{/tasks/showTasks}">Back to Task List</a>
+  <a th:href="@{/showTasks}">Back to Task List</a>
 </div>
 </body>
 </html>

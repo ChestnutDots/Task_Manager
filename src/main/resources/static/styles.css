@@ -1,0 +1,29 @@
+.add-btn{
+    background-color: #33cc33;
+    color: white;
+}
+
+.add-btn:hover{
+    background-color: #248f24;
+    color: white;
+}
+
+.update-btn{
+    background-color: #b319e6;
+    color: white;
+}
+
+.update-btn:hover{
+    background-color: #74248f;
+    color: white;
+}
+
+.delete-btn{
+    background-color: #e68019;
+    color: white;
+}
+
+.delete-btn:hover{
+    background-color: #8f5924;
+    color: white;
+}
