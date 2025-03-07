@@ -17,8 +17,19 @@ public class Task {
     @Column(name="task_status")
     private String taskStatus;
 
+    @Column(name="task_priority")
+    private int taskPriority;
+
     public Task(){
 
+    }
+
+    public int getTaskPriority() {
+        return taskPriority;
+    }
+
+    public void setTaskPriority(int taskPriority) {
+        this.taskPriority = taskPriority;
     }
 
     public int getId() {
