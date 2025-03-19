@@ -1,7 +1,9 @@
 package com.TaskManager.TaskManager.service;
 
 import com.TaskManager.TaskManager.dao.TaskRepository;
+import com.TaskManager.TaskManager.dao.UserRepository;
 import com.TaskManager.TaskManager.entity.Task;
+import com.TaskManager.TaskManager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,12 @@ import java.util.Optional;
 public class TaskServiceImplementation implements TaskService{
 
     private TaskRepository taskRepository;
+    private UserService userService;
 
     @Autowired
-    public TaskServiceImplementation(TaskRepository theTaskRepository){
+    public TaskServiceImplementation(TaskRepository theTaskRepository, UserService userService){
         taskRepository= theTaskRepository;
+        userService=userService;
     }
 
     @Override
@@ -48,4 +52,10 @@ public class TaskServiceImplementation implements TaskService{
     public void deleteById(int theId) {
         taskRepository.deleteById(theId);
     }
+
+    @Override
+    public List<Task> findAllByUser(User user) {
+        return taskRepository.findAllByUser(user);
+    }
+
 }

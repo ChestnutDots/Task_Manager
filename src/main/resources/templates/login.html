@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3>My Custom Login Page</h3>
-<form action="#" th:action="@{/authenticateTheUser}" method="POST">
+<form action="#" th:action="@{/authenticate}" method="POST">
 
   <!-- Check for login error-->
   <div th:if="${param.error}">
@@ -18,7 +18,12 @@
   <p>
     Password: <input type="text" name="password"/>
   </p>
-  <input type="submit" valöue="Login"/>
+  <input type="submit" value="Login"/>
 </form>
+<br><br>
+  <a th:href="@{/addUser}"
+     class="btn add-btn btn-sm mb-3">
+    Sign Up
+  </a>
 </body>
 </html>

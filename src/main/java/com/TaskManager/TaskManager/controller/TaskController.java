@@ -2,7 +2,11 @@ package com.TaskManager.TaskManager.controller;
 
 
 import com.TaskManager.TaskManager.entity.Task;
+import com.TaskManager.TaskManager.entity.User;
 import com.TaskManager.TaskManager.service.TaskService;
+import com.TaskManager.TaskManager.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +18,31 @@ import java.util.List;
 public class TaskController {
 
     private TaskService taskService;
+    private UserService userService;
 
-    public TaskController(TaskService theTaskService){
-        taskService=theTaskService;
+    @Autowired
+    public TaskController(TaskService theTaskService, UserService userService){
+        this.taskService=theTaskService;
+        this.userService=userService;
     }
+
 
     @GetMapping("/showTasks")
     public String showTasks(Model theModel){
 
         // show all tasks
-        List<Task> theTasks= taskService.findAll();
+        //List<Task> theTasks= taskService.findAll();
+
+        // define which user is logged in:
+        String username= SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User theUser=userService.findUserByUsername(username);
+
+        //only display the tasks of this user:
+        List<Task> userTasks=taskService.findAllByUser(theUser);
 
         // add the list to the model:
-        theModel.addAttribute("tasks", theTasks);
+        theModel.addAttribute("tasks", userTasks);
 
         return "show-tasks";
     }
@@ -45,6 +61,14 @@ public class TaskController {
 
     @PostMapping("/save")
     public String saveTask(@ModelAttribute("task") Task theTask){
+
+        // get the current user that is logged in:
+        String username= SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User theUser=userService.findUserByUsername(username);
+
+        // set the user id in the task to the current user:
+        theTask.setUser(theUser);
 
         //save the task:
         taskService.save(theTask);
