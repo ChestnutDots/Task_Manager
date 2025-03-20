@@ -20,7 +20,7 @@ public class UserController {
     @GetMapping("/addUser")
     public String addUser(Model theModel){
         theModel.addAttribute("user", new User());
-        return "newUser";
+        return "user-register";
     }
 
     @PostMapping("/saveUser")

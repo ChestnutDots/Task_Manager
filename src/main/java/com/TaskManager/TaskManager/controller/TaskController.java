@@ -44,7 +44,7 @@ public class TaskController {
         // add the list to the model:
         theModel.addAttribute("tasks", userTasks);
 
-        return "show-tasks";
+        return "task-list";
     }
 
     @GetMapping("/addTasks")
@@ -62,13 +62,26 @@ public class TaskController {
     @PostMapping("/save")
     public String saveTask(@ModelAttribute("task") Task theTask){
 
-        // get the current user that is logged in:
-        String username= SecurityContextHolder.getContext().getAuthentication().getName();
+      // retrieve an existing task:
+        if (theTask.getId()!=0){
+            Task existingTask=taskService.findById(theTask.getId());
 
-        User theUser=userService.findUserByUsername(username);
+            //preserve the user association:
+            theTask.setUser(existingTask.getUser());
 
-        // set the user id in the task to the current user:
-        theTask.setUser(theUser);
+        }else{
+
+            //if the task is new and has no user, assign the loged in user:
+            if(theTask.getUser()==null){
+                // get the current user that is logged in:
+                String username= SecurityContextHolder.getContext().getAuthentication().getName();
+
+                User theUser=userService.findUserByUsername(username);
+
+                // set the user id in the task to the current user:
+                theTask.setUser(theUser);
+            }
+        }
 
         //save the task:
         taskService.save(theTask);

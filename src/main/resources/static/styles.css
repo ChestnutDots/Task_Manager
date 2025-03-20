@@ -27,3 +27,20 @@
     background-color: #8f5924;
     color: white;
 }
+
+.logout-btn{
+    background-color: #1972e6;
+    color: white;
+}
+
+.logout-btn:hover{
+    background-color: #1250a1;
+    color: white;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}

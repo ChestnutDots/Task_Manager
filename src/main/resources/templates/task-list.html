@@ -18,12 +18,14 @@
         Add Task
     </a>
     <a th:href="@{/login}"
-    class="btn info-btn btn-sm mb-3 ">Log out</a>
+    class="btn logout-btn btn-sm mb-3 ">Log out</a>
   <table class="table table-hover table-striped">
     <thead class="table-light">
     <tr class="table-info">
-        <th>Task Description</th>
-        <th>Task Status</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Due Date</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -31,6 +33,8 @@
         <tr th:each="tempTask: ${tasks}">
           <td th:text="${tempTask.taskDescription}"/>
           <td th:text="${tempTask.taskStatus}"/>
+            <td th:text="${tempTask.taskPriority}"/>
+            <td th:text="${tempTask.taskDue}"/>
 
             <!--Add the update a task button -->
             <td><a th:href="@{/update(taskId=${tempTask.id})}"

@@ -2,6 +2,8 @@ package com.TaskManager.TaskManager.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name="task")
 public class Task {
@@ -17,11 +19,14 @@ public class Task {
     @Column(name="task_status")
     private String taskStatus;
 
+    @Column(name="task_due")
+    private LocalDate taskDue;
+
     @Column(name="task_priority")
-    private int taskPriority;
+    private String taskPriority;
 
     @ManyToOne(cascade={CascadeType.DETACH, CascadeType.PERSIST,
-            CascadeType.REFRESH, CascadeType.MERGE})
+            CascadeType.REFRESH})
     @JoinColumn(name="user_id")
     private User user;
 
@@ -29,11 +34,11 @@ public class Task {
 
     }
 
-    public int getTaskPriority() {
+    public String getTaskPriority() {
         return taskPriority;
     }
 
-    public void setTaskPriority(int taskPriority) {
+    public void setTaskPriority(String taskPriority) {
         this.taskPriority = taskPriority;
     }
 
@@ -67,5 +72,13 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public LocalDate getTaskDue() {
+        return taskDue;
+    }
+
+    public void setTaskDue(LocalDate taskDue) {
+        this.taskDue = taskDue;
     }
 }
