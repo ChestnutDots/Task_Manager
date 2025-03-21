@@ -41,7 +41,7 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests(configurer ->
                 configurer
-                        .requestMatchers("/login","/addUser").permitAll()
+                        .requestMatchers("/login","/addUser","/saveUser", "/css/**").permitAll()
                         .requestMatchers("/showTasks").authenticated()
                         .anyRequest().authenticated()
         )
