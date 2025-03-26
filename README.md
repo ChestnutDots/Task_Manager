@@ -23,12 +23,38 @@ A simple and secure task management web application built with **Java**, **Sprin
 - JUnit / Mockito
 - Maven
 
+**App Features and Demos**
+
+1. Create a New User
+![Task Manager Demo](GIFs/CreatingANewUser.gif)
+
+2. Log in
+![Task Manager Demo](GIFs/LoggingIn.gif)
+
+3. Add a Task
+![Task Manager Demo](GIFs/AddingATask.gif)
+
+4. Update a Task
+![Task Manager Demo](GIFs/UpdateTask.gif)
+
+5. Delete A Task
+![Task Manager Demo](GIFs/DeleteATask.gif)
+
+6. Log Out
+![Task Manager Demo](GIFs/LogOut.gif)
+
+7. Delete Account
+![Task Manager Demo](GIFs/DeleteAccount.gif)
+
+8. Admin User Management
+![Task Manager Demo](GIFs/AdminUserManagement.gif)  
+
 
 **Setup Instructions**
 
 1. Clone the repository
 
-   git clone https://github.com/ChestnutDots/task_manager.git
+   git clone https://github.com/ChestnutDots/Task_Manager.git
    cd task-manager-app
 
 2. Configure your database
@@ -47,7 +73,8 @@ A simple and secure task management web application built with **Java**, **Sprin
   
 **Folder Structure**
 
-src/
+<pre>
+   src/
 ├── main/
 │   ├── java/
 │   │   └── com/TaskManager/TaskManager/
@@ -60,6 +87,8 @@ src/
 │       ├── templates/
 │       └── application.properties
 └── test/
+
+</pre>
 
 **Admin Access**
 
