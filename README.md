@@ -28,7 +28,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 
 1. Clone the repository
 
-   git clone https://github.com/ChestnutDots/task-manager-app.git
+   git clone https://github.com/ChestnutDots/task_manager.git
    cd task-manager-app
 
 2. Configure your database
