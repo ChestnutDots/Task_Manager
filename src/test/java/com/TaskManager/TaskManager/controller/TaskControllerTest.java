@@ -34,11 +34,11 @@ public class TaskControllerTest {
     private UserService userService;
 
     @Test
-    @WithMockUser("linda")
+    @WithMockUser("laura")
     public void testShowTasks_ReturnsTaskListViewWithTasks() throws Exception{
 
         User theUser = new User();
-        theUser.setUsername("linda");
+        theUser.setUsername("laura");
 
         Task task1 = new Task();
         task1.setTaskDescription("Walk the dog");
@@ -50,7 +50,7 @@ public class TaskControllerTest {
         testList.add(task1);
         testList.add(task2);
 
-        when(userService.findUserByUsername("linda")).thenReturn(theUser);
+        when(userService.findUserByUsername("laura")).thenReturn(theUser);
         when(taskService.findAllByUser(theUser)).thenReturn(testList);
 
         mockMvc.perform(get("/showTasks"))
@@ -70,16 +70,16 @@ public class TaskControllerTest {
     }
 
     @Test
-    @WithMockUser(username="linda")
+    @WithMockUser(username="laura")
     public void testSaveNewTask_AssignsUserAndRedirects() throws Exception{
 
         User theUser = new User();
-        theUser.setUsername("linda");
+        theUser.setUsername("laura");
 
         Task theTask= new Task();
         theTask.setId(0);
 
-        when(userService.findUserByUsername("linda")).thenReturn(theUser);
+        when(userService.findUserByUsername("laura")).thenReturn(theUser);
 
         mockMvc.perform(post("/save")
                 .flashAttr("task", theTask))
@@ -93,11 +93,11 @@ public class TaskControllerTest {
     }
 
     @Test
-    @WithMockUser(username="linda")
+    @WithMockUser(username="laura")
     public void testSaveExistingTask_PreservesUserAndRedirects() throws Exception{
 
         User existingUser = new User();
-        existingUser.setUsername("linda");
+        existingUser.setUsername("laura");
 
         Task existingTask = new Task();
         existingTask.setId(1);
@@ -120,7 +120,7 @@ public class TaskControllerTest {
     }
 
     @Test
-    @WithMockUser("linda")
+    @WithMockUser("laura")
     public void testUpdateTask_ReturnsTaskFormWithExistingTask() throws Exception{
 
         Task mockTask = new Task();
@@ -138,7 +138,7 @@ public class TaskControllerTest {
     }
 
     @Test
-    @WithMockUser("linda")
+    @WithMockUser("laura")
     public void testUpdateTask_WhenTaskNotFound_ShouldReturnErrorPageOrThrow() throws Exception{
 
         int taskId=999;
@@ -151,7 +151,7 @@ public class TaskControllerTest {
     }
 
     @Test
-    @WithMockUser("linda")
+    @WithMockUser("laura")
     public void testDeleteTask_ShouldCallServiceAndRedirect() throws Exception{
 
         int taskId=42;

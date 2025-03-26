@@ -41,7 +41,7 @@ public class SecurityTest {
     }
 
     @Test
-    @WithMockUser(username="linda", roles={"USER"})
+    @WithMockUser(username="laura", roles={"USER"})
     public void showTasks_ShouldBeAccessible_WhenAuthenticated() throws Exception{
         when(userService.findUserByUsername("linda")).thenReturn(new User());
         when(taskService.findAllByUser(any())).thenReturn(new ArrayList<>());

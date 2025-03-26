@@ -28,7 +28,7 @@ public class AdminControllerTest {
     private UserService userService;
 
     @Test
-    @WithMockUser(username="linda", roles={"ADMIN"})
+    @WithMockUser(username="laura", roles={"ADMIN"})
     public void testShowUsers_ReturnsAListOfUsers() throws Exception{
 
         User theUser1= new User();
@@ -50,7 +50,7 @@ public class AdminControllerTest {
     }
 
     @Test
-    @WithMockUser(username="linda", roles={"ADMIN"})
+    @WithMockUser(username="laura", roles={"ADMIN"})
     public void testDeleteUser_ReturnsToTheListOfUsers() throws Exception{
 
         int userId=60;

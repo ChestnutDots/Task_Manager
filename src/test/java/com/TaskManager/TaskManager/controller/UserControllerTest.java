@@ -63,16 +63,16 @@ public class UserControllerTest {
     }
 
     @Test
-    @WithMockUser("linda")
+    @WithMockUser("laura")
     public void testDeleteUser_ShouldCallServiceAndRedirect() throws Exception{
 
         int userId=60;
 
         User theUser= new User();
-        theUser.setUsername("linda");
+        theUser.setUsername("laura");
         theUser.setId(userId);
 
-        when(userService.findUserByUsername("linda")).thenReturn(theUser);
+        when(userService.findUserByUsername("laura")).thenReturn(theUser);
 
         mockMvc.perform(get("/deleteUser")
                 .param("userId", String.valueOf(userId)))
