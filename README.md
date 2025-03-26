@@ -73,7 +73,8 @@ A simple and secure task management web application built with **Java**, **Sprin
   
 **Folder Structure**
 
-src/
+<pre>
+   src/
 ├── main/
 │   ├── java/
 │   │   └── com/TaskManager/TaskManager/
@@ -86,6 +87,8 @@ src/
 │       ├── templates/
 │       └── application.properties
 └── test/
+
+</pre>
 
 **Admin Access**
 
