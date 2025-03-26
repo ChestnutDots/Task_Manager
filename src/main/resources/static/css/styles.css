@@ -38,6 +38,26 @@
     color: white;
 }
 
+.delete-account-btn{
+    background-color: #8019e6;
+    color: white;
+}
+
+.delete-account-btn:hover{
+    background-color: #5912a1;
+    color: white;
+}
+
+.manage-users-btn{
+    background-color: #e6b319;
+    color: white;
+}
+
+.manage-users-btn:hover{
+    background-color: #a17d12;
+    color: white;
+}
+
 .center {
     margin: auto;
     width: 100%;

@@ -16,7 +16,7 @@
   <h3>Scheduled Tasks:</h3>
   <hr>
     <div sec:authorize="hasRole('ADMIN')">
-        <a class="btn btn-sm mb-3 btn-danger" th:href="@{/admin/showUsers}">Manage Users</a>
+        <a class="btn btn-sm mb-3 manage-users-btn" th:href="@{/admin/showUsers}">Manage Users</a>
     </div>
     <a th:href="@{/addTasks}"
     class="btn add-btn btn-sm mb-3">
@@ -27,7 +27,7 @@
     class="btn logout-btn btn-sm mb-3 ">Log out</a>
 
     <a th:href="@{/deleteUser}"
-       class="btn btn-danger btn-sm mb-3"
+       class="btn delete-account-btn btn-sm mb-3"
        onclick="if(!(confirm('Are you sure you want to delete your account?'))) return false">
         Delete My Account
     </a>
