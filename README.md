@@ -46,3 +46,30 @@ A simple and secure task management web application built with **Java**, **Sprin
    - ./mvnw test
   
 **Folder Structure**
+
+src/
+├── main/
+│   ├── java/
+│   │   └── com/TaskManager/TaskManager/
+│   │       ├── controller/
+│   │       ├── dao/
+│   │       ├── entity/
+│   │       ├── security/
+│   │       └── service/
+│   └── resources/
+│       ├── templates/
+│       └── application.properties
+└── test/
+
+**Admin Access**
+
+You can add admin roles manually to a user in the "roles" table (simply add ROLE_ADMIN).
+
+**License**
+
+This project is licensed under the MIT License.
+
+**Author**
+
+Linda Bistere
+
