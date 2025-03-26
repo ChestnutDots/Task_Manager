@@ -61,14 +61,18 @@ A simple and secure task management web application built with **Java**, **Sprin
    - create a MySQL database named "task-directory"
    - update the application.properties fiel with your DB credentials
 
-3. Run the app
+3. Configure the application.properties file
+   - rename the sample-application.properties to application.properties
+   - add your own database login information
+
+4. Run the app
    - with IntelliJ: Run the TaskManagerApplication.java file
    - or use ./mvnw spring-boot:run
   
-4. Access the app
+5. Access the app
    - http://localhost:8080/
   
-5. Run tests
+6. Run tests
    - ./mvnw test
   
 **Folder Structure**
