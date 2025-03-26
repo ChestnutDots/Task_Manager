@@ -43,7 +43,7 @@ public class SecurityTest {
     @Test
     @WithMockUser(username="laura", roles={"USER"})
     public void showTasks_ShouldBeAccessible_WhenAuthenticated() throws Exception{
-        when(userService.findUserByUsername("linda")).thenReturn(new User());
+        when(userService.findUserByUsername("laura")).thenReturn(new User());
         when(taskService.findAllByUser(any())).thenReturn(new ArrayList<>());
 
         mockMvc.perform(get("/showTasks"))
@@ -51,7 +51,7 @@ public class SecurityTest {
     }
 
     @Test
-    @WithMockUser(username="linda", roles={"USER"})
+    @WithMockUser(username="laura", roles={"USER"})
     public void adminPage_ShouldBeForbidden_ForRegularUser() throws Exception{
         mockMvc.perform(get("/admin"))
                 .andExpect(status().isForbidden());
