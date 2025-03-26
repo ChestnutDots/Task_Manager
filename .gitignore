@@ -49,6 +49,9 @@ logs/
 *.db
 *.sqlite
 
+# Ignore local dev insert scripts
+sql_scripts/create_sql_dataBase.sql
+
 # Ignore OS-generated files
 .DS_Store
 Thumbs.db
