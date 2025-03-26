@@ -1,9 +1,8 @@
 package com.TaskManager.TaskManager.service;
 
 import com.TaskManager.TaskManager.entity.User;
-import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 
 public interface UserService {
@@ -12,4 +11,7 @@ public interface UserService {
 
     void saveUser(User theUser);
 
+    List<User>findAllNonAdminUsers();
+
+    void deleteById(int theId);
 }

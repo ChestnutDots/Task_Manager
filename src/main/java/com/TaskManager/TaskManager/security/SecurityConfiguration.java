@@ -3,7 +3,6 @@ package com.TaskManager.TaskManager.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -12,21 +11,25 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
+/**
+ * Spring Security configuration for the Task Manager application.
+ */
 @Configuration
 public class SecurityConfiguration {
 
 
+    /**
+     * Retrieve user and its roles based on username.
+     * Customizes default queries for users and authorities to match database schema.
+     */
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
 
-        // tell spring security to use JDBC authentication with our data source:
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-        // define query to retrieve a user by username (in quotes its just simple sql)
         jdbcUserDetailsManager.setUsersByUsernameQuery(
                 "SELECT username, password, enabled FROM users WHERE username=?");
 
-        // define query to retrieve the authorities/roles by username
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
                 "SELECT u.username, r.role FROM users u JOIN roles r ON u.id=r.user_id WHERE u.username=?");
 
@@ -34,7 +37,12 @@ public class SecurityConfiguration {
     }
 
 
-    // configure spring security to use a custom login form:
+    /**
+     * Define URL access rules based on roles and user authentication status.
+     * - Accessible for all: login, registration, static resources
+     * - Accessible only for users: task management
+     * - Accessible only for admin: user management
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
@@ -42,7 +50,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/login","/addUser","/saveUser", "/css/**").permitAll()
-                        .requestMatchers("/showTasks").authenticated()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/showTasks", "/addTasks", "/save", "/update", "/delete").hasRole("USER")
                         .anyRequest().authenticated()
         )
                 .formLogin(form ->
@@ -60,6 +69,9 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    /**
+     * Encrypt passwords using BCrypt
+     */
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

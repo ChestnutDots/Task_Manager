@@ -9,8 +9,6 @@ import java.util.List;
 @Table(name="users")
 public class User {
 
-    // define fields
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
@@ -22,13 +20,15 @@ public class User {
     @Column(name="password")
     private String password;
 
+    /**
+     *  List of tasks created by this user
+     */
     @OneToMany(mappedBy="user",
             fetch=FetchType.LAZY,
             cascade={CascadeType.REFRESH, CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.PERSIST})
     private List<Task> tasks;
 
-    // define constructors
     public User(){
 
     }
@@ -70,8 +70,9 @@ public class User {
         this.tasks = tasks;
     }
 
-    // add convenience methods for bi-directional relationship:
-
+    /**
+     * Helper method to form a bi-directional relationship between task and user
+     */
     public void add(Task tempTask){
         if(tasks==null){
             tasks=new ArrayList();
@@ -81,8 +82,6 @@ public class User {
 
         tempTask.setUser(this);
     }
-
-    // add toString()
 
     @Override
     public String toString() {

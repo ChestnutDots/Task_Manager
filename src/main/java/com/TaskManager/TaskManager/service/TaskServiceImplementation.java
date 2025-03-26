@@ -1,7 +1,6 @@
 package com.TaskManager.TaskManager.service;
 
 import com.TaskManager.TaskManager.dao.TaskRepository;
-import com.TaskManager.TaskManager.dao.UserRepository;
 import com.TaskManager.TaskManager.entity.Task;
 import com.TaskManager.TaskManager.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,28 +9,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service implementation for task-related operations.
+ */
 @Service
 public class TaskServiceImplementation implements TaskService{
 
     private TaskRepository taskRepository;
-    private UserService userService;
 
     @Autowired
-    public TaskServiceImplementation(TaskRepository theTaskRepository, UserService userService){
+    public TaskServiceImplementation(TaskRepository theTaskRepository){
         taskRepository= theTaskRepository;
-        userService=userService;
     }
 
-    @Override
-    public List<Task> findAll() {
-        return taskRepository.findAll();
-    }
-
+    /**
+     * Retrieves the task by its id.
+     * Throws a RuntimeException if the task is not found.
+     */
     @Override
     public Task findById(int theId) {
         Optional<Task> result = taskRepository.findById(theId);
 
-        Task theTask=null;
+        Task theTask;
 
         if(result.isPresent()){
             theTask=result.get();

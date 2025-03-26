@@ -17,7 +17,7 @@ public class Role {
     @JoinColumn(name="user_id")
     private User user;
 
-    Role(){
+    public Role(){
 
     }
 
@@ -25,6 +25,7 @@ public class Role {
         this.role = role;
         this.user = user;
     }
+
 
     public int getId() {
         return id;

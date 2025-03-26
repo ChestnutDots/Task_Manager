@@ -79,10 +79,8 @@ public class TaskServiceTest {
 
         int theId=12;
 
-       // Call the method to delete:
         taskServiceImplementation.deleteById(theId);
 
-        // check that deleteById was called on the mock repository:
         verify(taskRepository, times(1)).deleteById(theId);
 
     }

@@ -26,90 +26,91 @@ public class TaskController {
         this.userService=userService;
     }
 
-
+    /**
+     * Display the list of tasks for the currently logged-in user
+     **/
     @GetMapping("/showTasks")
     public String showTasks(Model theModel){
 
-        // show all tasks
-        //List<Task> theTasks= taskService.findAll();
+        String currentUsername= SecurityContextHolder.getContext().getAuthentication().getName();
 
-        // define which user is logged in:
-        String username= SecurityContextHolder.getContext().getAuthentication().getName();
+        User theUser=userService.findUserByUsername(currentUsername);
 
-        User theUser=userService.findUserByUsername(username);
-
-        //only display the tasks of this user:
         List<Task> userTasks=taskService.findAllByUser(theUser);
 
-        // add the list to the model:
         theModel.addAttribute("tasks", userTasks);
 
         return "task-list";
     }
 
+    /**
+     * Show form to create a new task
+     **/
     @GetMapping("/addTasks")
     public String addTasks(Model theModel){
 
-        // create a new task (empty):
         Task theTask= new Task();
 
-        // add it to the model:
         theModel.addAttribute("task", theTask);
 
         return "task-form";
     }
 
+   /**
+    * Save a new or existing task
+    **/
     @PostMapping("/save")
     public String saveTask(@ModelAttribute("task") Task theTask){
 
-      // retrieve an existing task:
-        if (theTask.getId()!=0){
+        boolean exists=theTask.getId()!=0;
+
+        //Preserve user relationship for an existing task
+        if (exists){
+
             Task existingTask=taskService.findById(theTask.getId());
 
-            //preserve the user association:
             theTask.setUser(existingTask.getUser());
 
-        }else{
+        //For a new task, the current user is assigned
+        }else if(theTask.getUser()==null){
 
-            //if the task is new and has no user, assign the loged in user:
-            if(theTask.getUser()==null){
-                // get the current user that is logged in:
-                String username= SecurityContextHolder.getContext().getAuthentication().getName();
+            String username= SecurityContextHolder.getContext().getAuthentication().getName();
 
-                User theUser=userService.findUserByUsername(username);
+            User theUser=userService.findUserByUsername(username);
 
-                // set the user id in the task to the current user:
-                theTask.setUser(theUser);
-            }
+            theTask.setUser(theUser);
         }
 
-        //save the task:
         taskService.save(theTask);
 
-        //us a redirect:
         return "redirect:/showTasks";
     }
 
+    /**
+     * Show form to update an existing task
+     **/
     @GetMapping("/update")
     public String updateTask(@RequestParam("taskId") int theId, Model theModel){
 
-        //find the task from the repository:
         Task theTask=taskService.findById(theId);
 
-        // prepopulate the form with information from this task:
+        if(theTask==null){
+            return "404";
+        }
+
         theModel.addAttribute("task", theTask);
 
-        // send out to the form page:
         return "task-form";
     }
 
+   /**
+    * Delete a task by ID
+    **/
     @GetMapping("/delete")
     public String deleteTask(@RequestParam("taskId") int theId){
 
-        //delete the task:
         taskService.deleteById(theId);
 
-        // redirect back to the task list:
         return "redirect:/showTasks";
     }
 }
