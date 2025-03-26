@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+src/main/resources/application.properties
 
 ### STS ###
 .apt_generated
@@ -31,3 +32,23 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore environment and secret files
+.env
+.env.*
+application.properties
+application.yml
+application-*.properties
+application-*.yml
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore database files (if any)
+*.db
+*.sqlite
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
