@@ -23,7 +23,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 - JUnit / Mockito
 - Maven
 
-**How the App works**
+**App Features and Demos**
 
 1. Create a New User
 ![Task Manager Demo](GIFs/CreatingANewUser.gif)
