@@ -58,7 +58,7 @@ A simple and secure task management web application built with **Java**, **Sprin
    cd task-manager-app
 
 2. Configure your database
-   - create a MySQL database named "task-directory"
+   - create a MySQL database named "task-directory" (you can use the schema.sql file in the sql_scripts folder)
    - update the application.properties fiel with your DB credentials
 
 3. Configure the application.properties file
