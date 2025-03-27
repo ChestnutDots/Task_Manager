@@ -1,8 +1,8 @@
-**Task Manager App**
+# **Task Manager App**
 
 A simple and secure task management web application built with **Java**, **Spring Boot**, **Thymeleaf** and **MySQL**. Users can register, log in, create and manage tasks and delete their accounts. Admins can view and manage non-admin users.
 
-**Features**
+## **Features**
 
 - User registration and login
 - Role-based access control (Admin/User)
@@ -12,7 +12,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 - Clean UI with Thymeleaf templates and CSS Bootstrap
 - Test coverate (Controllers, Services, Security)
 
-**Technologies Used**
+## **Technologies Used**
 
 - Java 23
 - Spring Boot 3.4
@@ -23,7 +23,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 - JUnit / Mockito
 - Maven
 
-**App Features and Demos**
+## **App Features and Demos**
 
 1. Create a New User
 ![Task Manager Demo](GIFs/CreatingANewUser.gif)
@@ -50,7 +50,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 ![Task Manager Demo](GIFs/AdminUserManagement.gif)  
 
 
-**Setup Instructions**
+## **Setup Instructions**
 
 1. Clone the repository
 
@@ -75,7 +75,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 6. Run tests
    - ./mvnw test
   
-**Folder Structure**
+## **Folder Structure**
 
 <pre>
    src/
@@ -94,15 +94,15 @@ A simple and secure task management web application built with **Java**, **Sprin
 
 </pre>
 
-**Admin Access**
+## **Admin Access**
 
 You can add admin roles manually to a user in the "roles" table (simply add ROLE_ADMIN).
 
-**License**
+## **License**
 
 This project is licensed under the MIT License.
 
-**Author**
+## **Author**
 
 Linda Bistere
 
