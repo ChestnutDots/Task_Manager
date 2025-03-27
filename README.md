@@ -10,7 +10,7 @@ A simple and secure task management web application built with **Java**, **Sprin
 - Secure password hashing using BCrypt
 - Spring Security authentication and authorization
 - Clean UI with Thymeleaf templates and CSS Bootstrap
-- Test coverate (Controllers, Services, Security)
+- Test coverage (Controllers, Services, Security)
 
 ## **Technologies Used**
 
